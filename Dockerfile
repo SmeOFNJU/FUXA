@@ -4,13 +4,14 @@ FROM node:14
 WORKDIR /usr/src/app
 
 # Clone FUXA repository
-RUN git clone https://github.com/frangoteam/FUXA.git
+# RUN git clone https://github.com/frangoteam/FUXA.git
+RUN git clone https://github.com/SmeOFNJU/FUXA.git
 
-# Change working directory to FUXA
-WORKDIR /usr/src/app/FUXA
+# Change working directory to beetle
+WORKDIR /usr/src/app/beetle
 
 # Install server
-WORKDIR /usr/src/app/FUXA/server
+WORKDIR /usr/src/app/beetle/server
 RUN npm install
 
 # Workaround for sqlite3 https://stackoverflow.com/questions/71894884/sqlite3-err-dlopen-failed-version-glibc-2-29-not-found
@@ -20,8 +21,8 @@ RUN apt-get update && apt-get install -y sqlite3 libsqlite3-dev && \
     rm -rf /var/lib/apt/lists/*  && \
     npm install --build-from-source --sqlite=/usr/bin sqlite3
 
-ADD . /usr/src/app/FUXA
+ADD . /usr/src/app/beetle
 
-WORKDIR /usr/src/app/FUXA/server
+WORKDIR /usr/src/app/beetle/server
 EXPOSE 1881
 CMD [ "npm", "start" ]

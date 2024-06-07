@@ -15,7 +15,7 @@ WORKDIR /usr/src/app/beetle/server
 RUN npm install
 RUN npm install morgan
 RUN npm install socket.io
-RUN npm install fs-extragi
+RUN npm install fs-extra
 RUN npm install winston
 
 

@@ -12,12 +12,12 @@ WORKDIR /usr/src/app/beetle
 
 # Install server
 WORKDIR /usr/src/app/beetle/server
+RUN npm install
 RUN npm install morgan
 RUN npm install socket.io
 RUN npm install fs-extragi
 RUN npm install winston
 
-RUN npm install
 
 # Workaround for sqlite3 https://stackoverflow.com/questions/71894884/sqlite3-err-dlopen-failed-version-glibc-2-29-not-found
 RUN apt-get update && apt-get install -y sqlite3 libsqlite3-dev && \
